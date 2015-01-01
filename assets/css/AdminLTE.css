@@ -2306,6 +2306,7 @@ Component: timeline
   padding: 10px 20px;
   background: #fff;
   color: #444;
+  height: auto;
 }
 .form-box .body > .form-group,
 .form-box .footer > .form-group {

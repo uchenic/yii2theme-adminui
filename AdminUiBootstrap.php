@@ -24,8 +24,12 @@ class AdminUiBootstrap implements BootstrapInterface{
                 //'baseUrl' => '@web/themes/adminui',
             ],
         ]);
-        
-        
+
+        /*$app->set('urlManager', [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ]);*/
         
 		$app->set('assetManager' , [
 			'class'	=> 'yii\web\AssetManager',

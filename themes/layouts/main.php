@@ -1,5 +1,5 @@
 <?php
-use app\assets\AppAsset;
+use backend\assets\AppAsset;
 use yii\UrlAsset\component\UrlAsset;
 use yii\helpers\Html;
 use yii\adminUi\widget\Header;
@@ -16,9 +16,6 @@ use yii\adminUi\widget\Breadcrumbs;
  * @var string $content
  */
 AppAsset::register($this);
-$urls = new UrlAsset();
-$urls->registerAll($this);
-$urls->setParams($this);
 $this->beginPage()
 ?><!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -301,10 +298,10 @@ $this->beginPage()
                             ],
                         ],
                     ];
-                    
+                    /* TODO
 					if($this->params['urls']){
 						$menuitems = $this->params['urls'];
-					}
+					}*/
                     echo Nav::widget([
                         'options' => ['class' => 'sidebar-menu'],
                         'items' => $menuitems,
@@ -320,12 +317,13 @@ $this->beginPage()
                     <h1>
                         <?php echo $this->title;?>
                         <small>
-                            <?php
+                            Control panel
+                            <?php /*TODO
                             if($this->params['pagelabel']){
                                 echo $this->params['pagelabel'];
                             }else{ ?>
                             Control panel
-                            <?php } ?>
+                            <?php } */ ?>
                         </small>
                     </h1>
                     <?php                     
