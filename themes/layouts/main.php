@@ -43,7 +43,7 @@ $this->beginPage()
                     'class' => 'navbar-static-top',
                 ],
             ]);
-            
+
             $menuItems = [];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'']];
@@ -326,12 +326,12 @@ $this->beginPage()
                             <?php } */ ?>
                         </small>
                     </h1>
-                    <?php                     
+                    <?php
                     echo Breadcrumbs::widget([
                         'tag'   => 'ol',
                         'options'=>['class'=>'breadcrumb'],
                         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ])?>
+                    ]) ?>
                 </section>
 
                 <!-- Main content -->

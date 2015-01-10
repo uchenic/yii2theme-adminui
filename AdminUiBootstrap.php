@@ -26,35 +26,46 @@ class AdminUiBootstrap implements BootstrapInterface{
                 //'baseUrl' => '@web/themes/adminui',
             ],
         ]);
-
-        /*$app->set('urlManager', [
+        $app->set('urlManager', [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-        ]);*/
-        
+        ]);
+        $app->set('authManager', [
+            'class' => 'yii\rbac\DbManager'
+        ]);
 		$app->set('assetManager' , [
 			'class'	=> 'yii\web\AssetManager',
-                        'bundles' => [
-                                'yii\widgets\ActiveFormAsset' => [
-                                     'js' => [],
-                                     'depends' => [
-                                         'yii\adminUi\assetsBundle\AdminUiActiveForm',
-                                     ],
-                                ],                        
-                                'yii\grid\GridViewAsset' => [
-                                    'depends'   => [
-                                        'app\assets\AppAsset'
-                                    ],
-                                ],
+                'bundles' => [
+                        'yii\widgets\ActiveFormAsset' => [
+                             'js' => [],
+                             'depends' => [
+                                 'yii\adminUi\assetsBundle\AdminUiActiveForm',
+                             ],
+                        ],
+                        'yii\grid\GridViewAsset' => [
+                            'depends'   => [
+                                'backend\assets\AppAsset'
+                            ],
+                        ],
             ],            
             'linkAssets' => true,
         ]);
-        
         Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
             if(in_array($event->action->id,['login','forgot','reset-password']) && in_array('backend',  explode("\\", $event->sender->className()))){
                 $event->sender->layout = '//blank';
             }
         });
+        Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
+            if(in_array($event->action->id, ['index']) && in_array('backend',  explode("\\", $event->sender->className()))){
+                $event->sender->layout = '//index';
+            }
+        });
+        Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
+            if(in_array($event->action->id, ['create', 'update']) && in_array('backend',  explode("\\", $event->sender->className()))){
+                $event->sender->layout = '//form';
+            }
+        });
+
     }
 }

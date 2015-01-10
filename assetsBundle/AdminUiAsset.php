@@ -21,6 +21,7 @@ class AdminUiAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/AdminLTE.css',
+        'css/custom.css',
     ];
     
     public $js  = [            

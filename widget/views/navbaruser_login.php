@@ -8,14 +8,14 @@ if($type=='topbar'){
 ?>
 <a href="#" class="dropdown-toggle navbar-username" data-toggle="dropdown">
 	<i class="glyphicon glyphicon-user"></i>
-	<span><?php echo Yii::$app->user->identity->name;?> <i class="caret"></i></span>
+	<span><?php echo Yii::$app->user->identity->username;?> <i class="caret"></i></span>
 </a>
 <ul class="dropdown-menu">
 	<!-- User image -->
 	<li class="user-header bg-light-blue">
 		<img src="<?php echo $bundle->baseUrl?>/img/avatar3.png" class="img-circle" alt="User Image" />
 		<p>
-			<?=Yii::$app->user->identity->name?>
+			<?=Yii::$app->user->identity->username?>
                         <small><?php /* TODO echo (Yii::$app->user->identity->createdOn) ? 'Member since '.date('M. Y',  strtotime(Yii::$app->user->identity->createdOn)) : '';*/ ?></small>
 		</p>
 	</li>
@@ -48,7 +48,7 @@ if($type=='topbar'){
         <img src="<?php echo $bundle->baseUrl?>/img/avatar3.png" class="img-circle" alt="User Image" />
     </div>
     <div class="pull-left info">
-        <p>Hello, <?=  Html::a(Yii::$app->user->identity->name, ['/profile/default/index'])?></p>
+        <p>Hello, <?=  Html::a(Yii::$app->user->identity->username, ['/profile/default/index'])?></p>
 
         <i class="fa fa-circle text-success"></i> Online
     </div>
