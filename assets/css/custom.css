@@ -1,3 +1,30 @@
 .content  div[class$="index"] > h1, .content  div[class$="create"] > h1, .content  div[class$="update"] > h1 {
     display: none;
 }
+div.pagination-holder {
+    float: right;
+    width: 33%;
+    text-align: right;
+}
+div.pagination-holder .pagination {
+    margin: 0 0 10px 0;
+}
+.summary {
+    float: right;
+    width: 33%;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.table > thead > tr > th {
+    border-bottom: 1px solid #ddd;
+}
+
+table.table {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-footer {
+    margin: 10px 8px 0 8px;
+}

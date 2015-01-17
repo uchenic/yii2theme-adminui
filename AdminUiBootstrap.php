@@ -14,7 +14,7 @@ use yii\base\Event;
 class AdminUiBootstrap implements BootstrapInterface{
     public function bootstrap($app){
         \Yii::$classMap = array_merge(\Yii::$classMap,[
-                'yii\grid\CheckboxColumn'=>'@yii/adminUi/widget/CheckboxColumn.php',
+                //'yii\grid\CheckboxColumn'=>'@yii/adminUi/widget/CheckboxColumn.php',
                 //'yii\grid\ActionColumn'=>'@yii/adminUi/widget/ActionColumn.php',
                 'theme\widgets\Pjax'=>'@vendor/yiisoft/yii2/widgets/Pjax.php',
             ]);
@@ -31,7 +31,7 @@ class AdminUiBootstrap implements BootstrapInterface{
                     'cachePath' => '@runtime/Smarty/cache',
                     'widgets' => [
                         'functions' => [
-                            'GridView' => '\yii\grid\GridView',
+                            'GridView' => 'yii\grid\GridView',
                         ],
                     ]
                 ],
@@ -62,6 +62,24 @@ class AdminUiBootstrap implements BootstrapInterface{
             ],            
             'linkAssets' => true,
         ]);
+        if(Yii::$app->id == "app-backend") {
+            Yii::$container->set('yii\grid\GridView',
+                [
+                    'filterPosition' => '',
+                    'layout' => "\n{items}\n
+                        <div class=\"table-footer clearfix\">\n
+                            {actions}\n
+                            <div class=\"pagination-holder\">\n
+                                {pager}\n
+                            </div>\n
+                            {summary}\n
+                        </div>",
+                    'tableOptions' => [
+                        'class' => 'table table-hover table-striped'
+                    ]
+                ]
+            );
+        }
         Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
             if(in_array($event->action->id,['login','forgot','reset-password']) && in_array('backend',  explode("\\", $event->sender->className()))){
                 $event->sender->layout = '//blank';
