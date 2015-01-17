@@ -79,6 +79,17 @@ class AdminUiBootstrap implements BootstrapInterface{
                     ]
                 ]
             );
+            Yii::$container->set('yii\grid\ActionColumn',
+                [
+                    'options' => ['style' => 'width: 80px;']
+                ]
+            );
+            Yii::$container->set('yii\grid\CheckboxColumn',
+                [
+                    'options' => ['style' => 'width: 40px;']
+                ]
+            );
+
         }
         Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
             if(in_array($event->action->id,['login','forgot','reset-password']) && in_array('backend',  explode("\\", $event->sender->className()))){
