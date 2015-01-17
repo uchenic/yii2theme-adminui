@@ -81,7 +81,7 @@ class AdminUiBootstrap implements BootstrapInterface{
             );
             Yii::$container->set('yii\grid\ActionColumn',
                 [
-                    'options' => ['style' => 'width: 80px;']
+                    'options' => ['style' => 'width: 140px;'], 'contentOptions' => ['class' => 'action-column'], 'headerOptions' => ['class' => 'action-column']
                 ]
             );
             Yii::$container->set('yii\grid\CheckboxColumn',

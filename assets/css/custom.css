@@ -28,3 +28,16 @@ table.table {
 .table-footer {
     margin: 10px 8px 0 8px;
 }
+
+td.action-column a {
+    padding: 5px 10px 4px 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #333;
+}
+
+td.action-column a[title="Delete"] {
+    background-color: #D36A5F;
+    border-color: #D36A5F;
+    color: #fff;
+}
