@@ -96,11 +96,11 @@ class AdminUiBootstrap implements BootstrapInterface{
                 $event->sender->layout = '//blank';
             }
         });
-        Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
+        /*Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
             if(in_array($event->action->id, ['index']) && in_array('backend',  explode("\\", $event->sender->className()))){
                 $event->sender->layout = '//index';
             }
-        });
+        });*/
         Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
             if(in_array($event->action->id, ['create', 'update']) && in_array('backend',  explode("\\", $event->sender->className()))){
                 $event->sender->layout = '//form';
