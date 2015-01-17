@@ -15,7 +15,7 @@ class AdminUiBootstrap implements BootstrapInterface{
     public function bootstrap($app){
         \Yii::$classMap = array_merge(\Yii::$classMap,[
                 'yii\grid\CheckboxColumn'=>'@yii/adminUi/widget/CheckboxColumn.php',
-                'yii\grid\ActionColumn'=>'@yii/adminUi/widget/ActionColumn.php',
+                //'yii\grid\ActionColumn'=>'@yii/adminUi/widget/ActionColumn.php',
                 'theme\widgets\Pjax'=>'@vendor/yiisoft/yii2/widgets/Pjax.php',
             ]);
 
@@ -24,6 +24,17 @@ class AdminUiBootstrap implements BootstrapInterface{
             'theme' => [
                 'pathMap' => ['@backend/views' => '@backend/themes/adminui'],   // for Admin theme which resides on extension/adminui
                 //'baseUrl' => '@web/themes/adminui',
+            ],
+            'renderers' => [
+                'tpl' => [
+                    'class' => 'yii\smarty\ViewRenderer',
+                    'cachePath' => '@runtime/Smarty/cache',
+                    'widgets' => [
+                        'functions' => [
+                            'GridView' => '\yii\grid\GridView',
+                        ],
+                    ]
+                ],
             ],
         ]);
         $app->set('urlManager', [
