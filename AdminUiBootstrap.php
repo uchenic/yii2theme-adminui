@@ -13,40 +13,32 @@ use yii\base\Event;
 
 class AdminUiBootstrap implements BootstrapInterface{
     public function bootstrap($app){
-        \Yii::$classMap = array_merge(\Yii::$classMap,[
-                //'yii\grid\CheckboxColumn'=>'@yii/adminUi/widget/CheckboxColumn.php',
-                //'yii\grid\ActionColumn'=>'@yii/adminUi/widget/ActionColumn.php',
-                'theme\widgets\Pjax'=>'@vendor/yiisoft/yii2/widgets/Pjax.php',
-            ]);
+       
 
-        $app->set('view', [
-            'class'=>'yii\web\View',
-            'theme' => [
-                'pathMap' => ['@backend/views' => '@backend/themes/adminui'],   // for Admin theme which resides on extension/adminui
-                //'baseUrl' => '@web/themes/adminui',
-            ],
-            'renderers' => [
-                'tpl' => [
-                    'class' => 'yii\smarty\ViewRenderer',
-                    'cachePath' => '@runtime/Smarty/cache',
-                    'widgets' => [
-                        'functions' => [
-                            'GridView' => 'yii\grid\GridView',
-                        ],
-                    ]
-                ],
-            ],
-        ]);
-        $app->set('urlManager', [
-            'class' => 'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-        ]);
+        // $app->set('view', [
+        //     'class'=>'yii\web\View',
+        //     'theme' => [
+        //         'pathMap' => ['@backend/views' => '@backend/views'],   // for Admin theme which resides on extension/adminui
+        //         //'baseUrl' => '@web/themes/adminui',
+        //     ],
+        //     'renderers' => [
+        //         'tpl' => [
+        //             'class' => 'yii\smarty\ViewRenderer',
+        //             'cachePath' => '@runtime/Smarty/cache',
+        //             'widgets' => [
+        //                 'functions' => [
+        //                     'GridView' => 'yii\grid\GridView',
+        //                 ],
+        //             ]
+        //         ],
+        //     ],
+        // ]);
+        
         $app->set('authManager', [
             'class' => 'yii\rbac\DbManager'
         ]);
-		$app->set('assetManager' , [
-			'class'	=> 'yii\web\AssetManager',
+        $app->set('assetManager' , [
+            'class' => 'yii\web\AssetManager',
                 'bundles' => [
                         'yii\widgets\ActiveFormAsset' => [
                              'js' => [],
@@ -91,21 +83,21 @@ class AdminUiBootstrap implements BootstrapInterface{
             );
 
         }
-        Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
-            if(in_array($event->action->id,['login','forgot','reset-password']) && in_array('backend',  explode("\\", $event->sender->className()))){
-                $event->sender->layout = '//blank';
-            }
-        });
-        /*Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
-            if(in_array($event->action->id, ['index']) && in_array('backend',  explode("\\", $event->sender->className()))){
-                $event->sender->layout = '//index';
-            }
-        });*/
-        Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
-            if(in_array($event->action->id, ['create', 'update']) && in_array('backend',  explode("\\", $event->sender->className()))){
-                $event->sender->layout = '//form';
-            }
-        });
+        // Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
+        //     if(in_array($event->action->id,['login','forgot','reset-password']) && in_array('backend',  explode("\\", $event->sender->className()))){
+        //         $event->sender->layout = '//blank';
+        //     }
+        // });
+        // Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
+        //     if(in_array($event->action->id, ['index']) && in_array('backend',  explode("\\", $event->sender->className()))){
+        //         $event->sender->layout = '//index';
+        //     }
+        // });
+        // Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
+        //     if(in_array($event->action->id, ['create', 'update']) && in_array('backend',  explode("\\", $event->sender->className()))){
+        //         $event->sender->layout = '//form';
+        //     }
+        // });
 
     }
 }
