@@ -1,5 +1,5 @@
 {
-  "name": "tez/yii2theme-adminui",
+  "name": "uchenic/yii2theme-adminui",
   "description": "Yii2 admin ui based on AdminLTE free template",
   "version":"1.0.0",
   "keywords": [
@@ -12,7 +12,7 @@
   "license": "GPLv2",
   "support": {
     "issues": "https://github.com/Mihai-p/yii2theme-adminUI/issues?page=1&state=open",
-    "source": "https://github.com/Mihai-p/yii2theme-adminUI"
+    "source": "https://github.com/uchenic/yii2theme-adminui"
   },
   "authors": [
     {
