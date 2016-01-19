@@ -1,7 +1,6 @@
 {
   "name": "uchenic/yii2theme-adminui",
   "description": "Yii2 admin ui based on AdminLTE free template",
-  "version":"1.0.0",
   "keywords": [
     "yii2",
 	"theme",
